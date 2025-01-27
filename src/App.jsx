@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Table } from "./components/Table.jsx";
 
+// release 1.0.0 ready for production
 function App() {
   const [coinsData, setCoinsData] = useState();
 
