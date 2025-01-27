@@ -22,7 +22,7 @@ export const HeaderInfos = () => {
       <ul className={"title"}>
         <li>
           <h1>
-            <img src={"./public/assets/logo.png"} alt={"logo"} />
+            <img src={"/assets/logo.png"} alt={"logo"} />
             Watch Tower
           </h1>
         </li>
