@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
 import { PercentChange } from "./PercentChange.jsx";
+import { StarIcon } from "./StarIcon.jsx";
+import { useState } from "react";
+import { CoinChart } from "./CoinChart.jsx";
 
 export const TableLine = ({ coin, index }) => {
+  const [showChart, setShowCHart] = useState(false);
+
   const priceFormatter = (num) => {
     return Math.round(num).toString().length < 4
       ? new Intl.NumberFormat("us-US", {
@@ -18,20 +23,27 @@ export const TableLine = ({ coin, index }) => {
   return (
     <div className={"table-line"}>
       <div className={"infos-container"}>
-        <span>*</span>
+        <StarIcon coinId={coin.id} />
         <p>{index + 1}</p>
         <div className={"img"}>
           <img src={coin.image} height={"20"} alt={"logo"} />
         </div>
         <div className={"infos"}>
-          <div className={"chart-img"}>
+          <div
+            className={"chart-img"}
+            onMouseEnter={() => setShowCHart(true)}
+            onMouseLeave={() => setShowCHart(false)}
+          >
             <img src={"/assets/chart-icon.svg"} alt={"chart icon"} />
+            <div className={"chart-container"} id={coin.name}>
+              {showChart && <CoinChart coinId={coin.id} coinName={coin.name} />}
+            </div>
           </div>
           <h4>{coin.name}</h4>
           <span>- {coin.symbol.toUpperCase()}</span>
           <a
             target={"_blank"}
-            href={`https://www.coingecko.com/fr/pi%C3%A8ces/${coin.name.toLowerCase().replaceAll(" ", "-")}`}
+            href={`https://www.coingecko.com/fr/pi%C3%A8ces/${coin.id}`}
           >
             <img src={"/assets/info-icon.svg"} alt={"info icon"} />
           </a>

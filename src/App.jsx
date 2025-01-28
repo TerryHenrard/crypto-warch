@@ -3,6 +3,7 @@ import { GlobalChart } from "./components/GlobalChart.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Table } from "./components/Table.jsx";
+import { ToTop } from "./components/ToTop.jsx";
 
 // release 1.0.0 ready for production
 function App() {
@@ -20,6 +21,14 @@ function App() {
         },
       )
       .then((res) => setCoinsData(res.data));
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 145) {
+        document.querySelector(".table-header").classList.add("active");
+      } else {
+        document.querySelector(".table-header").classList.remove("active");
+      }
+    });
   }, []);
 
   return (
@@ -29,6 +38,7 @@ function App() {
         <GlobalChart coinsData={coinsData} />
       </header>
       <Table coinsData={coinsData} />
+      <ToTop />
     </div>
   );
 }
