@@ -49,7 +49,7 @@ export const HeaderInfos = () => {
           %
         </li>
         <li>
-          BTC dominance :{" "}
+          ETH dominance :{" "}
           {headerData.market_cap_percentage &&
             headerData.market_cap_percentage.eth.toFixed(1)}
           %
