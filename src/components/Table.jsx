@@ -4,6 +4,7 @@ import { TableLine } from "./TableLine.jsx";
 import { ToTop } from "./ToTop.jsx";
 import { useSelector } from "react-redux";
 
+// Release 2.0.0 ready for production
 export const Table = ({ coinsData }) => {
   const [rangeNumber, setRangeNumber] = useState(100);
   const [orderBy, setOrderBy] = useState("");
